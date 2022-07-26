@@ -1,4 +1,4 @@
-import { ApolloServer, gql } from "apollo-server";
+const { ApolloServer, gql } = require("apollo-server");
 
 //define GraphQL schema
 const typeDefs = gql`
@@ -14,3 +14,10 @@ const resolvers = {
     info: () => "HackerNewsClone",
   },
 };
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
+
+server.listen().then(({ url }) => console.log(`Start the server at ${url}`));

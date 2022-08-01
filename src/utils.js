@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-APP_SECRET = "GRAPHQL";
+APP_SECRET = "GRAPHQL-IS_Aw3s0m3ç";
 
 function getTokenPayload(token) {
   //get user.id

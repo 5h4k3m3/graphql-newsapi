@@ -1,12 +1,11 @@
-function postedBy(parent, args, context) {
-  return context.prisma.link
+function links(parent, args, context) {
+  return context.prisma.user
     .findUnique({
-      // parent: get 1st resolver level from 2nd resolver level
       where: { id: parent.id },
     })
-    .postedBy();
+    .links();
 }
 
 module.exports = {
-  postedBy,
+  links,
 };

@@ -1,7 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-APP_SECRET = "GRAPHQL";
+const APP_SECRET = require("../utils.js");
 
 async function signup(parent, args, context) {
   // password
@@ -38,4 +38,13 @@ async function login(parent, args, context) {
     token,
     user,
   };
+}
+
+async function post(parent, args, context) {
+  return await context.prisma.link.create({
+    data: {
+      url: args.url,
+      description: args.description,
+    },
+  });
 }

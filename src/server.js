@@ -3,6 +3,11 @@ const fs = require("fs");
 const path = require("path");
 const { getUserId } = require("./utils.js");
 
+const Query = require("./resolvers/Query.js");
+const Mutation = require("./resolvers/Mutation.js");
+const Link = require("./resolvers/Link.js");
+const User = require("./resolvers/User.js");
+
 const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
@@ -10,24 +15,10 @@ const prisma = new PrismaClient();
 //define resolver
 // set value to typeDefs
 const resolvers = {
-  Query: {
-    info: () => "HackerNewsClone",
-    feed: async (parent, args, context) => {
-      return context.prisma.link.findMany();
-    },
-  },
-
-  Mutation: {
-    post: (parent, args, context) => {
-      const newLink = context.prisma.link.create({
-        data: {
-          url: args.url,
-          description: args.description,
-        },
-      });
-      return newLink;
-    },
-  },
+  Query,
+  Mutation,
+  Link,
+  User,
 };
 
 const server = new ApolloServer({

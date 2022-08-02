@@ -8,9 +8,14 @@ const Mutation = require("./resolvers/Mutation.js");
 const Link = require("./resolvers/Link.js");
 const User = require("./resolvers/User.js");
 
+// subscribe
+const { PusSub } = require("apollo-server");
+
 const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
+
+const pubsub = new PubSub();
 
 //define resolver
 // set value to typeDefs
@@ -28,6 +33,7 @@ const server = new ApolloServer({
     return {
       ...req,
       prisma,
+      pubsub,
       userId: req && req.headers.authorization ? getUserId(req) : null,
     };
   },

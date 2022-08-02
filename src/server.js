@@ -5,9 +5,10 @@ const { getUserId } = require("./utils.js");
 
 const Query = require("./resolvers/Query.js");
 const Mutation = require("./resolvers/Mutation.js");
+const Subscription = require("./resolvers/Subscription.js");
 const Link = require("./resolvers/Link.js");
 const User = require("./resolvers/User.js");
-const Subscription = require("./resolvers/Subscription.js");
+const Vote = require("./resolvers/Vote.js");
 
 // subscribe
 const { PubSub } = require("apollo-server");
@@ -26,6 +27,7 @@ const resolvers = {
   Subscription,
   Link,
   User,
+  Vote,
 };
 
 const server = new ApolloServer({

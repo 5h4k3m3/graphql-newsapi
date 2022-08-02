@@ -7,9 +7,10 @@ const Query = require("./resolvers/Query.js");
 const Mutation = require("./resolvers/Mutation.js");
 const Link = require("./resolvers/Link.js");
 const User = require("./resolvers/User.js");
+const Subscription = require("./resolvers/Subscription.js");
 
 // subscribe
-const { PusSub } = require("apollo-server");
+const { PubSub } = require("apollo-server");
 
 const { PrismaClient } = require("@prisma/client");
 
@@ -22,6 +23,7 @@ const pubsub = new PubSub();
 const resolvers = {
   Query,
   Mutation,
+  Subscription,
   Link,
   User,
 };
